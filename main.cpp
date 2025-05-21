@@ -95,7 +95,7 @@ int main(int argc, char* argv[]) {
 	KSPConvergedReason reason;
 	KSPGetConvergedReason(ksp,&reason);
 
-	PetscViewerASCIIOpen(PETSC_COMM_WORLD,"/home/chewson/CLionProjects/petsc-testing/divergence_dx.bin",&viewerprint);
+	PetscViewerASCIIOpen(PETSC_COMM_WORLD,"divergence_dx.bin",&viewerprint);
 	VecView(x,viewerprint);
 	PetscViewerDestroy(&viewerprint);
 
