@@ -27,21 +27,21 @@ int main(int argc, char* argv[]) {
 	KSP ksp;
 	PC pc;
 
-	PetscViewerBinaryOpen(PETSC_COMM_WORLD, "examples/J_SOD EFACF0p5_NetP200_604_1.bin", FILE_MODE_READ, &viewer);
+	PetscViewerBinaryOpen(PETSC_COMM_WORLD, "examples/J.bin", FILE_MODE_READ, &viewer);
 
 	MatCreate(PETSC_COMM_WORLD, &A);
 	//MatSetSizes(A, procsize[locmpirank], procsize[locmpirank], globalvecsize, globalvecsize);
 	MatSetFromOptions(A);
 	MatLoad(A, viewer);
 
-	PetscViewerBinaryOpen(PETSC_COMM_WORLD, "examples/rhs_SOD EFACF0p5_NetP200_604_1.bin", FILE_MODE_READ, &viewer);
+	PetscViewerBinaryOpen(PETSC_COMM_WORLD, "examples/rhs.bin", FILE_MODE_READ, &viewer);
 
 	VecCreate(PETSC_COMM_WORLD, &b);
 	//VecSetSizes(b, procsize[locmpirank], globalvecsize);
 	VecSetFromOptions(b);
 	VecLoad(b, viewer);
 
-	PetscViewerBinaryOpen(PETSC_COMM_WORLD, "examples/dx_SOD EFACF0p5_NetP200_604_1.bin", FILE_MODE_READ, &viewer);
+	PetscViewerBinaryOpen(PETSC_COMM_WORLD, "examples/dx.bin", FILE_MODE_READ, &viewer);
 
 	VecCreate(PETSC_COMM_WORLD, &x);
 	//VecSetSizes(x, procsize[locmpirank], globalvecsize);
