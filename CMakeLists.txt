@@ -20,6 +20,6 @@ include_directories(SYSTEM "${PETSC_LIB_PATH}/include")
 add_executable(petsc-testing main.cpp)
 
 
-target_link_libraries(petsc-testing -l:libpetsc.a -l:libmpi.a -l:libmpifort.a -l:libsuperlu_dist.a -l:libptesmumps.a -l:libptscotchparmetisv3.a -l:libptscotch.a -l:libptscotcherr.a -l:libesmumps.a -l:libscotch.a -l:libscotcherr.a -l:libparmetis.a -l:libmetis.a -l:libHYPRE.a)
+target_link_libraries(petsc-testing -l:libpetsc.a -l:libmpi.a -l:libmpifort.a -l:libHYPRE.a)
 
 target_link_libraries(petsc-testing ${MKL_LINK_LIBS} ${MKL_LINK_LIBS} ${MKL_LINK_LIBS} gfortran)
