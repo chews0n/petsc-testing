@@ -14,8 +14,8 @@ int main(int argc, char* argv[]) {
 	int locmpisize, locmpirank;
 	PetscInitialize(&argc, &argv, nullptr, nullptr);
 
-	int globalvecsize = 61494;
-	std::vector<int> procsize ={7813, 7674, 7458, 7597, 7651, 7914, 7913, 7474};
+//	int globalvecsize = 61494;
+//	std::vector<int> procsize ={7813, 7674, 7458, 7597, 7651, 7914, 7913, 7474};
 
 	MPI_Comm_size(PETSC_COMM_WORLD, &locmpisize);
 	MPI_Comm_rank(PETSC_COMM_WORLD, &locmpirank);
@@ -30,21 +30,21 @@ int main(int argc, char* argv[]) {
 	PetscViewerBinaryOpen(PETSC_COMM_WORLD, "examples/J_SOD EFACF0p5_NetP200_604_1.bin", FILE_MODE_READ, &viewer);
 
 	MatCreate(PETSC_COMM_WORLD, &A);
-	MatSetSizes(A, procsize[locmpirank], procsize[locmpirank], globalvecsize, globalvecsize);
+	//MatSetSizes(A, procsize[locmpirank], procsize[locmpirank], globalvecsize, globalvecsize);
 	MatSetFromOptions(A);
 	MatLoad(A, viewer);
 
 	PetscViewerBinaryOpen(PETSC_COMM_WORLD, "examples/rhs_SOD EFACF0p5_NetP200_604_1.bin", FILE_MODE_READ, &viewer);
 
 	VecCreate(PETSC_COMM_WORLD, &b);
-	VecSetSizes(b, procsize[locmpirank], globalvecsize);
+	//VecSetSizes(b, procsize[locmpirank], globalvecsize);
 	VecSetFromOptions(b);
 	VecLoad(b, viewer);
 
 	PetscViewerBinaryOpen(PETSC_COMM_WORLD, "examples/dx_SOD EFACF0p5_NetP200_604_1.bin", FILE_MODE_READ, &viewer);
 
 	VecCreate(PETSC_COMM_WORLD, &x);
-	VecSetSizes(x, procsize[locmpirank], globalvecsize);
+	//VecSetSizes(x, procsize[locmpirank], globalvecsize);
 	VecSetFromOptions(x);
 	VecLoad(x, viewer);
 
